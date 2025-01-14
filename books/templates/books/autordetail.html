@@ -16,6 +16,8 @@
 
     <div class="d-grid mt-5 justify-content-center">
 
+        {% if libros %}
+
         <ul class="list-group">
             {% for libro in libros %}
 
@@ -23,6 +25,12 @@
 
             {% endfor %}
         </ul>
+
+        {% else %}
+
+        <p>Este autor no tiene libros asociados</p>
+
+        {% endif %}
 
         <a class="mt-5" href="{% url 'books:index' %}"><button class="btn btn-primary" type="button">Volver a la página principal</button></a>
 
