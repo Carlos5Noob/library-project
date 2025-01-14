@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Index Page</title>
+</head>
+<body>
+
+<h1>Página principal</h1>
+
+<ul>
+{% for book in books %}
+
+    <li>{{ book.title }} -- Autor: {{ book.authors.first_name }} {{ book.authors.last_name }}</li>
+
+{% endfor %}
+</ul>
+
+</body>
+</html>
