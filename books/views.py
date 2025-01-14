@@ -30,3 +30,17 @@ def genre_detail(request, genre_name):
     genre = get_object_or_404(Genre, name=genre_name)
     libros = Book.objects.filter(genre=genre)
     return render(request, template_name="books/librosgen.html", context={"genre": genre, "libros": libros})
+
+def form(request):
+    if request.method == "POST":
+        first_name = request.POST["first_name"]
+        last_name = request.POST["last_name"]
+        birth_date = request.POST["birth_date"]
+
+        new_author = Author(first_name=first_name, last_name=last_name, birth_date=birth_date)
+        new_author.save()
+
+        return render(request, template_name="books/formulario.html", context={"añadido": "Nuevo autor añadido"})
+
+
+    return render(request, template_name="books/formulario.html")

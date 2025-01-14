@@ -10,5 +10,6 @@ urlpatterns = [
     path("autores/", views.author, name='author'),
     path("autores/<int:author_id>/", views.author_detail, name='author_detail'),
     path("generos/", views.genre, name='genero'),
-    path("<str:genre_name>/", views.genre_detail, name='genre_detail'),
+    path("generos/<str:genre_name>/", views.genre_detail, name='genre_detail'),
+    path("add/", views.form, name='form'),
 ]
