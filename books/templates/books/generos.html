@@ -14,7 +14,7 @@
     <ul class="list-group">
         {% for genero in generos %}
 
-            <li class="list-group-item"> {{ genero.name }}</li>
+            <li class="list-group-item"><a href="{% url 'books:genre_detail' genero.name %}"> {{ genero.name }}</a></li>
 
         {%  endfor %}
     </ul>
