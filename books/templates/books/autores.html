@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Autores disponibles</title>
+</head>
+<body>
+
+    <h1>Lista de autores disponibles</h1>
+
+    <ul>
+        {% for autor in autores %}
+
+            <li>{{ autor.first_name }} {{ autor.last_name }}</li>
+
+        {% endfor %}
+    </ul>
+
+</body>
+</html>
