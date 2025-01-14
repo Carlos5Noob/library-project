@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Detalles</title>
+</head>
+<body>
+    
+<h1>Detalles de {{ book.title }}</h1>
+
+    <ul>
+        <li>Autor: {{ book.authors.first_name }} {{ book.authors.last_name }}</li>
+        <li>Género:  {{ book.genre.name }}</li>
+        <li>Resumen: {{ book.sumary }}</li>
+        <li>Fecha de publicación: {{ book.publish_date }}</li>
+    </ul>
+
+
+</body>
+</html>
