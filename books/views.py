@@ -16,3 +16,7 @@ def detail(request, book_id):
 def author(request):
     autores = Author.objects.all()
     return render(request, "books/autores.html", context={"autores": autores})
+
+def author_detail(request, author_id):
+    autor = get_object_or_404(Author, pk=author_id)
+    return render(request, template_name="books/autordetail.html", context={"autor": autor})
