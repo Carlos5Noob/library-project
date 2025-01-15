@@ -1,6 +1,7 @@
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
 
+import books
 from .models import Book, Author, Genre
 
 
@@ -44,3 +45,7 @@ def form(request):
 
 
     return render(request, template_name="books/formulario.html")
+
+def recientes(request):
+    libros = Book.objects.order_by("-publish_date")[:5]
+    return render(request, template_name="books/recientes.html", context={"libros": libros})
