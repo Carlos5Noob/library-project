@@ -49,3 +49,6 @@ def form(request):
 def recientes(request):
     libros = Book.objects.order_by("-publish_date")[:5]
     return render(request, template_name="books/recientes.html", context={"libros": libros})
+
+def jonatan(request):
+    return render(request, template_name="books/jonatan.html")

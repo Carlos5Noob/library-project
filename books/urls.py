@@ -13,4 +13,5 @@ urlpatterns = [
     path("generos/<str:genre_name>/", views.genre_detail, name='genre_detail'),
     path("add/", views.form, name='form'),
     path("recientes/", views.recientes, name='recientes'),
+    path("jonatan/", views.jonatan, name='jonatan'),
 ]
