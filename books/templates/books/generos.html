@@ -13,8 +13,14 @@
 <div class="d-grid mt-5 justify-content-center">
     <ul class="list-group">
         {% for genero in generos %}
-
-            <li class="list-group-item"><a href="{% url 'books:genre_detail' genero.name %}"> {{ genero.name }}</a></li>
+            <li class="list-group-item"><a href="{% url 'books:genre_detail' genero.name %}"> {{ genero.name }}</a>{% if genero.name == "Terror" %}
+                ({{ libros_terror }})
+            {% elif genero.name == "Comedia" %}
+                ({{ libros_comedia }})
+                {% else%}
+                ({{ libros_deportes }})
+            {% endif %}
+            </li>
 
         {%  endfor %}
     </ul>

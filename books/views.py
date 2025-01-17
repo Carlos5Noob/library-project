@@ -25,7 +25,19 @@ def author_detail(request, author_id):
 
 def genre(request):
     generos = Genre.objects.all()
-    return render(request, template_name="books/generos.html", context={"generos": generos})
+    libros_terror = Book.objects.filter(genre = 1)
+    cont_t = 0
+    for i in libros_terror:
+        cont_t+=1
+    libros_comedia = Book.objects.filter(genre = 2)
+    cont_c = 0
+    for i in libros_comedia:
+        cont_c+=1
+    libros_deportes = Book.objects.filter(genre = 3)
+    cont_d = 0
+    for i in libros_deportes:
+        cont_d+=1
+    return render(request, template_name="books/generos.html", context={"generos": generos, "libros_terror": cont_t, "libros_deportes": cont_d, "libros_comedia": cont_c})
 
 def genre_detail(request, genre_name):
     genre = get_object_or_404(Genre, name=genre_name)
