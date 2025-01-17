@@ -58,6 +58,38 @@ def form(request):
 
     return render(request, template_name="books/formulario.html")
 
+def form2(request):
+    autores = Author.objects.all()
+    genres = Genre.objects.all()
+    if request.method == "POST":
+        title = request.POST["title"]
+        author_id = request.POST["authors"]
+        genre = request.POST["genre"]
+        publish_date = request.POST["publish_date"]
+        sumary = request.POST["sumary"]
+
+
+        author = get_object_or_404(Author, id=author_id)
+        genre = get_object_or_404(Genre, id=genre)
+
+
+        new_book = Book(
+            title=title,
+            authors=author,
+            genre=genre,
+            publish_date=publish_date,
+            sumary=sumary
+        )
+        new_book.save()
+
+        return render(request, "books/formulario2.html", {
+            "añadido": "Nuevo libro añadido a la lista",
+            "autores": autores,
+            "genres": genres,
+        })
+
+    return render(request, "books/formulario2.html", {"autores": autores, "genres": genres})
+
 def recientes(request):
     libros = Book.objects.order_by("-publish_date")[:5]
     return render(request, template_name="books/recientes.html", context={"libros": libros})
