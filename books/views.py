@@ -1,6 +1,9 @@
+from django.http import HttpResponseRedirect
 from django.shortcuts import render
 from django.shortcuts import get_object_or_404
+from django.urls import reverse
 
+from django.contrib.auth import authenticate, login, logout
 import books
 from .models import Book, Author, Genre
 
@@ -96,3 +99,16 @@ def recientes(request):
 
 def jonatan(request):
     return render(request, template_name="books/jonatan.html")
+
+def login_view(request):
+    if request.method == "POST":
+        username = request.POST["username"]
+        password = request.POST["password"]
+        user = authenticate(request, username=username, password=password)
+
+        if user is not None:
+            login(request, user)
+            return HttpResponseRedirect(reverse('books:index'))
+        else:
+            return render(request, "books/login.html", context={"error": "Invalid username or password"})
+    return render(request, template_name="books/login.html")
