@@ -22,7 +22,10 @@
     {% endfor %}
     </ul>
 
-    <a class="mt-4" href="{% url 'logout' %}"><button class="btn btn-secondary" type="button">Cerrar sesión</button></a>
+   <form action="{% url 'logout' %}" method="post">
+        {% csrf_token %}
+        <button class="mt-4 btn btn-danger" type="submit">Cerrar sesión</button>
+   </form>
 
 </div>
 
